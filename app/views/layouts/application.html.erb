@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="aqua" >
+<html data-theme="cyberpunk" >
   <head>
     <title>Sakujiru</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,10 +12,29 @@
   </head>
 
   <body>
-    <%= render "partial/header" %>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%# header %>
+    <header>
+      <%= render "partial/header" %>
+    </header>
+    <%# main %>
+    <main>
+      <%# flash %>
+      <% if flash[:notice] %>
+        <div class="alert alert-info">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <%# flash %>
       <%= yield %>
     </main>
-    <%= render "partial/footer" %>
+    <%# footer %>
+    <footer>
+      <%= render "partial/footer" %>
+    </footer>
   </body>
 </html>
