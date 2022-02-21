@@ -1,0 +1,20 @@
+<div class="grid grid-cols-1 md:grid-cols-3">
+  <% @posts.each do |post| %>
+    <%# 投稿表示 %>
+    <div class="card w-96 bg-base-100 shadow-xl">
+      <%# 投稿画像 %>
+      <%= image_tag post.arts.first.image.url(:medium) %>
+      <%# 投稿情報 %>
+      <div class="card-body">
+        <%# タイトル %>
+        <%= post.art_name %>
+        <%# 作品詳細 %>
+        <%= post.art_text %>
+        <div class="justify-end card-actions">
+          <div class="badge badge-outline">Fashion</div>
+          <div class="badge badge-outline">Products</div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
