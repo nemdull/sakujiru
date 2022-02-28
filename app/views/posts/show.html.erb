@@ -1,0 +1,23 @@
+<%# 投稿表示 %>
+<div class="card w-96 bg-base-100 shadow-xl">
+  <%# 投稿画像 %>
+  <%= image_tag @post.arts.first.image.url(:medium) %>
+  <%# 投稿情報 %>
+  <div class="card-body">
+    <%# タイトル %>
+    <%= @post.art_name %>
+    <%# 作品詳細 %>
+    <%= @post.art_text %>
+    <%# タグ %>
+    <div class="justify-end card-actions">
+      <div class="badge badge-outline">Fashion</div>
+      <div class="badge badge-outline">Products</div>
+    </div>
+    <%# 削除ボタン %>
+    <% if @post.user_id == current_user.id %>
+      <div class="card-actions">
+        <%= button_to "削除", post_path(@post), method: :delete, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
