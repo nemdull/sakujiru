@@ -13,8 +13,10 @@
         <%# 作品詳細 %>
         <%= post.art_text %>
         <div class="justify-end card-actions">
-          <div class="badge badge-outline">Fashion</div>
-          <div class="badge badge-outline">Products</div>
+          <%# カテゴリー %>
+          <div class="badge badge-outline">
+            <%= post.category.name %>
+          </div>
         </div>
         <%# 削除ボタン %>
         <% if post.user_id == current_user.id %>
