@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: %i(show destroy)
+  before_action :set_parents
 
   def new
     @post = Post.new
@@ -35,6 +36,14 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def get_category_children
+    @category_children = Category.find("#{params[:parent_id]}").children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
   private
     def post_params
       params.require(:post).permit(:art_name,arts_attributes: [:image]).merge(user_id: current_user.id)
@@ -42,5 +51,9 @@ class PostsController < ApplicationController
 
     def set_post
       @post = Post.find_by(id: params[:id])
+    end
+
+    def set_parents
+      @parents = Category.where(ancestry: nil)
     end
 end
