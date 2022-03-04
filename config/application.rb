@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Sakujiru
   class Application < Rails::Application
+    config.assets.css_compressor = nil
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
