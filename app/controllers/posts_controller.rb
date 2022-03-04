@@ -52,8 +52,5 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find_by(id: params[:id])
     end
-
-    def set_parents
-      @parents = Category.where(ancestry: nil)
-    end
+  end
 end
