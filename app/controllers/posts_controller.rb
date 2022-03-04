@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_post, only: %i(show destroy)
-  before_action :set_parents
 
   def new
     @post = Post.new
