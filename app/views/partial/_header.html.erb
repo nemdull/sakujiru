@@ -11,6 +11,8 @@
     <div class="flex items-stretch">
       <%# ログイン後 %>
       <% if current_user %>
+        <%# swipe %>
+        <%= link_to "マッチング", swipe_path, class: "btn btn-ghost btn-sm rounded-btn" %>
         <%# 作字一覧 %>
         <%= link_to "作字一覧", posts_path, class: "btn btn-ghost btn-sm rounded-btn"%>
         <%# 新規投稿 %>
