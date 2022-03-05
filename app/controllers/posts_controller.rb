@@ -43,6 +43,12 @@ class PostsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+  def swipe
+    # 自分以外の投稿を表示する
+    @posts = Post.where.not(user_id: current_user.id)
+    @user = User.find(current_user.id)
+  end
+
   private
     def post_params
       params.require(:post).permit(:art_name,arts_attributes: [:image]).merge(user_id: current_user.id)
