@@ -10,6 +10,9 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :self_introduction, length: { maximum: 500 }
 
+  # CarrierWave
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
   def update_without_current_password(params, *options)
 
     if params[:password].blank? && params[:password_confirmation].blank?

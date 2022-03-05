@@ -1,10 +1,11 @@
 <div class="container mx-auto">
   <%# avatar %>
-  <div class="avatar">
-    <div class="w-24 rounded-full">
-      <img src="https://api.lorem.space/image/face?hash=92310">
-    </div>
-  </div>
+  <% if @user.profile_photo.url.nil? %>
+    <p>画像設定なし</p>
+  <% else %>
+    <%= image_tag @user.profile_photo.url, class: "profile-img" %>
+  <% end %>
+
   <%# username %>
   <div class="">
     <%= @user.name %>
