@@ -18,12 +18,6 @@
             <%= post.category.name %>
           </div>
         </div>
-        <%# 削除ボタン %>
-        <% if post.user_id == current_user.id %>
-          <div class="card-actions">
-            <%= button_to "削除", post_path(post), method: :delete, class: "btn btn-primary" %>
-          </div>
-        <% end %>
 
       </div>
     </div>
