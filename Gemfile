@@ -58,6 +58,7 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 
 # mini_magick
+gem 'mini_magick'
 
 # kaminari
 gem 'kaminari'
