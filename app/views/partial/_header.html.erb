@@ -19,6 +19,8 @@
         <%= link_to "新規投稿", new_post_path, class: "btn btn-ghost btn-sm rounded-btn" %>
         <%# マイページ %>
         <%= link_to "マイページ", user_path(current_user), class: "btn btn-ghost btn-sm rounded-btn" %>
+        <%# ユーザー一覧 %>
+        <%= link_to "クリエイター一覧", users_path, class: "btn btn-ghost btn-sm rounded-btn" %>
         <%# Log out %>
         <%= button_to "サインアウト", destroy_user_session_path, method: :delete, class: "btn btn-ghost btn-sm rounded-btn" %>
       <%# ログイン前 %>

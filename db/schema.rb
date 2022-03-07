@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_03_090248) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_07_052433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_03_090248) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.bigint "chat_room_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "content"
+    t.index ["chat_room_id"], name: "index_chat_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
+  end
+
+  create_table "chat_room_users", force: :cascade do |t|
+    t.bigint "chat_room_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_chat_room_users_on_chat_room_id"
+    t.index ["user_id"], name: "index_chat_room_users_on_user_id"
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,6 +87,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_03_090248) do
   end
 
   add_foreign_key "arts", "posts"
+  add_foreign_key "chat_messages", "chat_rooms"
+  add_foreign_key "chat_messages", "users"
+  add_foreign_key "chat_room_users", "chat_rooms"
+  add_foreign_key "chat_room_users", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"

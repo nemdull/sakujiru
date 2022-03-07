@@ -1,0 +1,15 @@
+<% @users.each do |user| %>
+
+  <%= button_to chat_rooms_path(params: {user_id:user.id}), method: :post do %>
+
+    <% if user.profile_photo.url.nil? %>
+      <p>画像設定なし</p>
+    <% else %>
+      <%= image_tag user.profile_photo.url, class: "matching__person-img" %>
+    <% end %>
+
+    <div>
+      <%= user.name %>
+    </div>
+  <% end %>
+<% end %>
